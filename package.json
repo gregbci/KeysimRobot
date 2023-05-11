@@ -1,14 +1,19 @@
 {
-  "name": "keysimrobot",
-  "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
-  "scripts": {
-    "start": "node ."
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "robotjs": "^0.6.0"
-  }
+	"name": "keysimrobot",
+	"version": "1.0.0",
+	"description": "",
+	"main": "main.js",
+	"scripts": {
+		"start": "electron .",
+		"package": "electron-builder --publish never"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"robotjs": "^0.6.0"
+	},
+	"devDependencies": {
+		"electron": "^24.3.0",
+		"electron-builder": "^23.6.0"
+	}
 }
