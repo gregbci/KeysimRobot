@@ -1,6 +1,8 @@
 # KeysimRobot
 
-This is a test program for [robot.js](https://github.com/octalmage/robotjs).
+This is a test program for [robot.js](https://github.com/octalmage/robotjs).  It will send keystrokes to the foreground application after a delay then quit.
 
-Run `node ./main.js` and then switch to the application you want to receive the keyboard commands.
+Setup with `npm ci` then run using `node ./main.js`
+
+
 
