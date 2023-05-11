@@ -4,7 +4,6 @@ const sendButton = document.getElementById("sendButton");
 const statusLabel = document.getElementById("statusLabel");
 
 sendButton.addEventListener("click", () => {
-	console.log("renderer sending");
 	ipcRenderer.send("send-keys");
 });
 
