@@ -1,5 +1,5 @@
 const { app, ipcMain, BrowserWindow } = require("electron");
-// const robot = require("robotjs");
+const robot = require("robotjs");
 
 let win = null;
 
@@ -42,14 +42,14 @@ async function sendKeys() {
 	await sleep(delay);
 
 	// Set delay to something reasonable, setting to zero causes keystrokes to be missed
-	// robot.setKeyboardDelay(100);
+	robot.setKeyboardDelay(10);
 
-	// // Send individual keyboard commands
-	// robot.keyTap("h");
-	// robot.keyTap("e");
-	// robot.keyTap("l");
-	// robot.keyTap("l");
-	// robot.keyTap("o");
+	// Send individual keyboard commands
+	robot.keyTap("h");
+	robot.keyTap("e");
+	robot.keyTap("l");
+	robot.keyTap("l");
+	robot.keyTap("o");
 	win.webContents.send("sent-keys");
 }
 

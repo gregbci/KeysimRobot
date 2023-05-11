@@ -4,6 +4,7 @@
 	"description": "",
 	"main": "main.js",
 	"scripts": {
+		"install": "electron-rebuild",
 		"start": "electron .",
 		"package": "electron-builder --publish never"
 	},
@@ -14,6 +15,7 @@
 	},
 	"devDependencies": {
 		"electron": "^24.3.0",
+		"@electron/rebuild": "^3.2.13",
 		"electron-builder": "^23.6.0"
 	}
 }
