@@ -45,8 +45,10 @@ async function sendKeys() {
 	await sleep(delay);
 
 	// send keys using desired module
-	//await sendKeysRobot();
-	await sendKeysNutJS();
+	//await typeRobot();
+	//await pressRobot();
+	//await typeNutJS();
+	await pressNutJS();
 
 	win.webContents.send("sent-keys");
 }
@@ -55,12 +57,9 @@ async function sleep(seconds) {
 	return new Promise((resolve) => setTimeout(resolve, seconds * 1000.0));
 }
 
-
-async function sendKeysRobot() {
-	// Set delay to something reasonable, setting to zero causes keystrokes to be missed
+async function typeRobot() {
 	robot.setKeyboardDelay(10);
 
-	// Send individual keyboard commands
 	robot.keyTap("r");
 	robot.keyTap("o");
 	robot.keyTap("b");
@@ -68,7 +67,27 @@ async function sendKeysRobot() {
 	robot.keyTap("t");
 }
 
-async function sendKeysNutJS() {
+// this doesn't actually hold the key down
+async function pressRobot() {
+	robot.keyToggle("w", "down");
+	await sleep(2);
+	robot.keyToggle("w", "up");
+	robot.keyToggle("s", "down");
+	await sleep(2);
+	robot.keyToggle("s", "up");
+}
+
+async function typeNutJS() {
 	keyboard.config.autoDelayMs = 10;
 	await keyboard.type("nut.js");
+}
+
+// this doesn't actually hold the key down
+async function pressNutJS() {
+	await keyboard.pressKey(Key.W);
+	await sleep(2);
+	await keyboard.releaseKey(Key.W);
+	await keyboard.pressKey(Key.S);
+	await sleep(2);
+	await keyboard.releaseKey(Key.S);
 }
