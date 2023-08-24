@@ -1,5 +1,8 @@
 const { app, ipcMain, BrowserWindow } = require("electron");
+
+// two ways to control keyboard
 const robot = require("robotjs");
+const { keyboard, Key } = require("@nut-tree/nut-js");
 
 let win = null;
 
@@ -41,18 +44,31 @@ async function sendKeys() {
 	win.webContents.send("sending-keys");
 	await sleep(delay);
 
-	// Set delay to something reasonable, setting to zero causes keystrokes to be missed
-	robot.setKeyboardDelay(10);
+	// send keys using desired module
+	//await sendKeysRobot();
+	await sendKeysNutJS();
 
-	// Send individual keyboard commands
-	robot.keyTap("h");
-	robot.keyTap("e");
-	robot.keyTap("l");
-	robot.keyTap("l");
-	robot.keyTap("o");
 	win.webContents.send("sent-keys");
 }
 
 async function sleep(seconds) {
 	return new Promise((resolve) => setTimeout(resolve, seconds * 1000.0));
+}
+
+
+async function sendKeysRobot() {
+	// Set delay to something reasonable, setting to zero causes keystrokes to be missed
+	robot.setKeyboardDelay(10);
+
+	// Send individual keyboard commands
+	robot.keyTap("r");
+	robot.keyTap("o");
+	robot.keyTap("b");
+	robot.keyTap("o");
+	robot.keyTap("t");
+}
+
+async function sendKeysNutJS() {
+	keyboard.config.autoDelayMs = 10;
+	await keyboard.type("nut.js");
 }
